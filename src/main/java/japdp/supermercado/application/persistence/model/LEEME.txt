@@ -1,0 +1,21 @@
+Los campos _ToOne tiene el id de la entidad relacionada en el DTO.
+
+Ejemplo:
+
+public class Order implements Serializable {
+
+	private long id;                      //--> Al DTO
+
+	private String date;                  //--> Al DTO
+	
+	private String shipAddress;           //--> Al DTO
+
+	// Unidireccional
+	@ManyToOne
+	private Customer customer;	          //--> Al DTO
+	
+	@OneToMany(mappedBy="order")
+	private Set<OrderDetail> orderDetail; //--> No va al DTO
+	
+Se ha puesto nombre a las tablas porque Order es una palabra reservada
+de SQL daba problemas
